@@ -51,7 +51,7 @@ class _KeretaScreen extends State<KeretaScreen> {
                     : warnaKosong
                 : warnaIsi;
             mappingKursi[columnKursi[j]].add(flatButtonKursi(
-              padaApi: padaApi,
+              posisiKursi: padaApi,
               colorCurrent: colorCurrent,
               kolom: columnKursi[j],
               baris: i,
@@ -66,14 +66,14 @@ class _KeretaScreen extends State<KeretaScreen> {
   }
 
   FlatButton flatButtonKursi(
-      {String padaApi, Color colorCurrent, String kolom, int baris}) {
+      {String posisiKursi, Color colorCurrent, String kolom, int baris}) {
     return FlatButton(
-      child: Text(padaApi),
+      child: Text(posisiKursi),
       color: colorCurrent,
       onPressed: () {
         if (colorCurrent != warnaIsi) {
           kursiTerpilih(
-            posisiKursi: padaApi,
+            posisiKursi: posisiKursi,
             kolom: kolom,
             baris: baris,
           );
@@ -88,7 +88,7 @@ class _KeretaScreen extends State<KeretaScreen> {
       if (listKursiTerpilih.contains(posisiKursi)) {
         listKursiTerpilih.remove(posisiKursi);
         mappingKursi[kolom][baris] = flatButtonKursi(
-          padaApi: posisiKursi,
+          posisiKursi: posisiKursi,
           baris: baris,
           colorCurrent: warnaKosong,
           kolom: kolom,
@@ -96,7 +96,7 @@ class _KeretaScreen extends State<KeretaScreen> {
       } else {
         listKursiTerpilih.add(posisiKursi);
         mappingKursi[kolom][baris] = flatButtonKursi(
-          padaApi: posisiKursi,
+          posisiKursi: posisiKursi,
           baris: baris,
           colorCurrent: warnaTerpilih,
           kolom: kolom,
